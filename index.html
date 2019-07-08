@@ -18,23 +18,28 @@
                 name: "August",
                 age: "32"
             }
-            onButtonClicked(e){
-                console.log("hey bro, are you at home?");
+            //WTF, understand THIS
+            //https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/
+            onButtonClicked = (e) => {
+                console.log(this.state);
             }
-            onHover(e){
+            onHover = (e) => {
+                this.setState({
+                    hovered: 1
+                })
                 console.log("Hovered at", e.timeStamp);
             }
-            onCopy(e){
+            onCopy = (e) => {
                 console.log("bro, can you call me?");
             }
             render() {
                 return (
                     <div className="app-content">
                         <h1>Start Site</h1>
-                        <p>My name is {this.state.name} and I'm {this.state.age}</p>
-                        <button onClick={this.onButtonClicked}>Do not click me</button>
-                        <button onMouseOver={this.onHover}>Hover me</button>
+                        <p>{this.state.hovered ? "NOUP" : "CAN YOU CALL ME?"}</p>
+                        <button onMouseOver={this.onHover}>Hover to say no</button>
                         <p onCopy={this.onCopy}>Do not copy me</p>
+                        <button onClick={this.onButtonClicked}>Do not click me</button>
                     </div>
                 );
             }
