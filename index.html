@@ -14,11 +14,27 @@
     <div id="app"></div>
     <script type="text/babel">
         class App extends React.Component {
+            state = { 
+                name: "August",
+                age: "32"
+            }
+            onButtonClicked(e){
+                console.log("hey bro, are you at home?");
+            }
+            onHover(e){
+                console.log("Hovered at", e.timeStamp);
+            }
+            onCopy(e){
+                console.log("bro, can you call me?");
+            }
             render() {
                 return (
                     <div className="app-content">
-                        <h1> Start Site </h1>
-                        <p>{Math.random()*10}</p>
+                        <h1>Start Site</h1>
+                        <p>My name is {this.state.name} and I'm {this.state.age}</p>
+                        <button onClick={this.onButtonClicked}>Do not click me</button>
+                        <button onMouseOver={this.onHover}>Hover me</button>
+                        <p onCopy={this.onCopy}>Do not copy me</p>
                     </div>
                 );
             }
